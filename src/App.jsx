@@ -1,6 +1,12 @@
 import './App.css'
 
+// React-Router
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+
+// context
+import { AuthProvider } from './context/AuthContext'
+
+// pages
 import { Home } from './pages/Home/Home'
 import { About } from './pages/About/About'
 import { Navbar } from './components/Navbar'
@@ -13,18 +19,20 @@ function App() {
 
   return (
       <div className='App'>
-        <BrowserRouter>
-        <Navbar />
-          <div className='container'>
-            <Routes>
-              <Route path='/' element={<Home />}/>
-              <Route path='/about' element={<About />}/>
-              <Route path='/login' element={<Login />}/>
-              <Route path='/register' element={<Register/>}/>
-            </Routes>
-          </div>
-          <Footer />
-        </BrowserRouter>
+        <AuthProvider>
+          <BrowserRouter>
+          <Navbar />
+            <div className='container'>
+              <Routes>
+                <Route path='/' element={<Home />}/>
+                <Route path='/about' element={<About />}/>
+                <Route path='/login' element={<Login />}/>
+                <Route path='/register' element={<Register/>}/>
+              </Routes>
+            </div>
+            <Footer />
+          </BrowserRouter>
+        </AuthProvider>
       </div>
   )
 }
