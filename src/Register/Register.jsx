@@ -1,4 +1,3 @@
-import { db } from '../firebase/config'
 import { useAuthentication } from '../hooks/useAuthentication';
 import styles from './Register.module.css';
 
@@ -8,14 +7,15 @@ import { useState, useEffect } from 'react'
 export const Register = () => {
     const [displayName, setDisplayName] = useState("");
     const [email, setEmail] = useState("");
-    const[password, setPassword] = useState("");
+    const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("")
     const [error, setError] = useState("")
 
     const {createUser, error: authError, loading} = useAuthentication();
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
+
         setError("")
 
         const user = {

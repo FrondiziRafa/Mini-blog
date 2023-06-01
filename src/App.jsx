@@ -11,7 +11,7 @@ import { useState, useEffect } from 'react';
 import { useAuthentication } from './hooks/useAuthentication'
 
 // context
-import { AuthProvider } from './context/AuthContext'
+import { AuthContextProvider } from './context/AuthContext'
 
 // pages
 import { Home } from './pages/Home/Home'
@@ -45,7 +45,7 @@ function App() {
 
   return (
       <div className='App'>
-        <AuthProvider value={user}>
+        <AuthContextProvider value={user}>
           <BrowserRouter>
           <Navbar />
             <div className='container'>
@@ -54,17 +54,16 @@ function App() {
                 <Route path='/about' element={<About />}/>
                 <Route path='/login' 
                 element= {!user ? <Login />:<Navigate to="/" />}/>
-                <Route path='/register' 
-                element={!user ? <Register/>: <Navigate to="/" />}/>
+                <Route path='/register' element={!user ? <Register /> : <Navigate to='/' />} />
                 <Route path='/posts/create' 
                 element={user ? <CreatePost />: <Navigate to="/login" />} />
                 <Route path='/dashboard' 
-                element={user ? <Dashboard />: <Navigate to="/login" />}/>
+                element={!user ? <Dashboard />: <Navigate to="/login" />}/>
               </Routes>
             </div>
             <Footer />
           </BrowserRouter>
-        </AuthProvider>
+        </AuthContextProvider>
       </div>
   )
 }
