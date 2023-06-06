@@ -3,7 +3,6 @@ import styles from './Register.module.css';
 
 import { useState, useEffect } from 'react'
 
-
 export const Register = () => {
     const [displayName, setDisplayName] = useState("");
     const [email, setEmail] = useState("");
