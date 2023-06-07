@@ -17,7 +17,7 @@ export const CreatePost = () => {
 
 
   return (
-    <div>
+    <div className={styles.createPost}>
         <h2>Criar Post</h2>
         <p>Escreva sobre o que quiser e compartilhe seu conhecimento</p>
         <form onSubmit={handleSubmit}>
@@ -71,9 +71,9 @@ export const CreatePost = () => {
             value={tags}
             />
           </label>
-          {!loading && <button className='btn'>Entrar</button>}
+          {/* {!loading && <button className='btn'>Entrar</button>}
           {loading && <button className='btn' disabled>Aguarde...</button>}
-            {error && <p className='error'>{error}</p>}
+            {error && <p className='error'>{error}</p>} */}
         </form>
     </div>
   )
